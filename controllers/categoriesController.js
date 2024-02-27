@@ -15,6 +15,7 @@ exports. getAllCategories = async (req, res) => {
         
         // Extract category data from query results
         const categories = results.map(category => ({
+          id:category.id,
           name: category.name
         }));
         

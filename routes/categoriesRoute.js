@@ -4,6 +4,6 @@ const { addCategory,getAllCategories} = require("../controllers/categoriesContro
 const{isLoggedIn} =require("../middlewares/isLoggedIn");
 const{isAdmin} =require("../middlewares/isAdmin");
 router.get("/categories",getAllCategories);
-router.post("/categories/addCategory",isLoggedIn,isAdmin,addCategory);
+router.post("/categories/addcategory",isLoggedIn,isAdmin,addCategory);
 
 module.exports = router;
