@@ -30,9 +30,11 @@ app.get('/', (req, res) => {
 const user = require("./routes/userRoute");
 const category = require("./routes/categoriesRoute");
 const product = require("./routes/productRoute");
+const cart = require("./routes/cartRoute");
 app.use("/api/v1", user);
 app.use("/api/v1", category);
 app.use("/api/v1", product);
+app.use("/api/v1", cart);
 
 
 
