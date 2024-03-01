@@ -47,36 +47,36 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getProductById = async (req, res) => {
     const productId = req.params.id;
-
+  
     try {
-        // Query to fetch product by ID
-        const query = 'SELECT * FROM products WHERE id = ?';
-        await db.query(query, [productId], (error, results) => {
-            if (error) {
-                console.error('Error fetching product:', error);
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-
-            if (results.length === 0) {
-                return res.status(404).json({ message: 'Product not found' });
-            }
-
-            const product = results[0];
-
-            const detailedProduct = {
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                description: product.description,
-                availability: product.availability,
-                stock: product.stock,
-                category_id: product.category_id
-            };
-
-            res.json(detailedProduct);
-        });
+      // Query to fetch product by ID
+      const query = 'SELECT * FROM products WHERE id = ?';
+      await db.query(query, [productId], (error, results) => {
+        if (error) {
+          console.error('Error fetching product:', error);
+          return res.status(500).json({ message: 'Internal server error' });
+        }
+  
+        if (results.length === 0) {
+          return res.status(404).json({ message: 'Product not found' });
+        }
+  
+        const product = results[0];
+  
+        const detailedProduct = {
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          description: product.description,
+          availability: product.availability,
+          stock: product.stock,
+          category_id: product.category_id
+        };
+  
+        res.json(detailedProduct);
+      });
     } catch (err) {
-        console.error('Error fetching product:', err);
-        res.status(500).json({ message: 'Internal server error' });
+      console.error('Error fetching product:', err);
+      res.status(500).json({ message: 'Internal server error' });
     }
-};
+  };
